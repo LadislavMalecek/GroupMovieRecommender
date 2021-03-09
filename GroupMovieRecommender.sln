@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.0.0
+MinimumVisualStudioVersion = 16.0.0.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupMovieRecommender.Server", "Server\GroupMovieRecommender.Server.csproj", "{CCF6A825-1C87-4EC0-A05C-1CD9C9F0B466}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupMovieRecommender.Client", "Client\GroupMovieRecommender.Client.csproj", "{2A3EC9C5-6E7E-4DA4-8736-BE6479D4C0B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupMovieRecommender.Shared", "Shared\GroupMovieRecommender.Shared.csproj", "{8D51716A-0C04-49B3-ABE5-7412D1D9FBC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A3EC9C5-6E7E-4DA4-8736-BE6479D4C0B4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2A3EC9C5-6E7E-4DA4-8736-BE6479D4C0B4}.Debug|x64.Build.0 = Debug|Any CPU
+		{2A3EC9C5-6E7E-4DA4-8736-BE6479D4C0B4}.Release|x64.ActiveCfg = Release|Any CPU
+		{2A3EC9C5-6E7E-4DA4-8736-BE6479D4C0B4}.Release|x64.Build.0 = Release|Any CPU
+		{CCF6A825-1C87-4EC0-A05C-1CD9C9F0B466}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CCF6A825-1C87-4EC0-A05C-1CD9C9F0B466}.Debug|x64.Build.0 = Debug|Any CPU
+		{CCF6A825-1C87-4EC0-A05C-1CD9C9F0B466}.Release|x64.ActiveCfg = Release|Any CPU
+		{CCF6A825-1C87-4EC0-A05C-1CD9C9F0B466}.Release|x64.Build.0 = Release|Any CPU
+		{8D51716A-0C04-49B3-ABE5-7412D1D9FBC1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8D51716A-0C04-49B3-ABE5-7412D1D9FBC1}.Debug|x64.Build.0 = Debug|Any CPU
+		{8D51716A-0C04-49B3-ABE5-7412D1D9FBC1}.Release|x64.ActiveCfg = Release|Any CPU
+		{8D51716A-0C04-49B3-ABE5-7412D1D9FBC1}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72D481A9-6DCE-44B7-B49F-C3F3C3E5C7A4}
+	EndGlobalSection
+EndGlobal
