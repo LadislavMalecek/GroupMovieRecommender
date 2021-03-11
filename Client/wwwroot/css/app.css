@@ -42,9 +42,46 @@ a, .btn-link {
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+
+#loading-logo {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#loading-logo-center {
+    display: table-cell;
+    vertical-align: middle;
+    /* align-content: center; */
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+        "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 24px;
+}
+
+#loading-logo-secondary div {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 3px;
+    animation: wave-animation 1.2s linear infinite;
+    animation-delay: calc(var(--n) * -0.12s);
+}
+
+@keyframes wave-animation {
+    20% {
+        opacity: 0.2;
     }
+}

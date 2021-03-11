@@ -14,7 +14,21 @@
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div id="loading-logo">
+            <div id="loading-logo-center">
+                <div id="loading-logo-main-text">
+                    Group Movie Recommender
+                </div>
+                <div id="loading-logo-secondary">
+                    <div style="--n: 3"></div>
+                    <div style="--n: 2"></div>
+                    <div style="--n: 1"></div>
+                    <div style="--n: 0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
@@ -25,5 +39,4 @@
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
-
 </html>
