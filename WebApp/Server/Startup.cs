@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Linq;
 using GroupMovieRecommender.Server.Data;
 using GroupMovieRecommender.Server.Models;
 
@@ -26,17 +23,21 @@ namespace GroupMovieRecommender.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
 
+            // configure authentication db services
+            services.AddDbContext<ApplicationAuthenticationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("AppAuthenticationConnectionString")));
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("AppConnectionString")));
+                      
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<ApplicationAuthenticationDbContext>();
 
             services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+                .AddApiAuthorization<ApplicationUser, ApplicationAuthenticationDbContext>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
@@ -58,7 +59,7 @@ namespace GroupMovieRecommender.Server
             {
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                // app.UseHsts();
             }
 
             app.UseHttpsRedirection();
@@ -77,6 +78,9 @@ namespace GroupMovieRecommender.Server
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("index.html");
             });
+
+            Data.ApplicationDbContext.EnsureCreated(app.ApplicationServices);
+            Data.ApplicationAuthenticationDbContext.EnsureCreated(app.ApplicationServices);
         }
     }
 }
