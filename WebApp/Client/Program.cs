@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using GroupMovieRecommender.Client.Services;
 
 namespace GroupMovieRecommender.Client
 {
@@ -25,6 +26,13 @@ namespace GroupMovieRecommender.Client
             builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("GroupMovieRecommender.ServerAPI"));
 
             builder.Services.AddApiAuthorization();
+
+            builder.Services.AddScoped(sp => new HttpClient
+            {
+                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+            });
+
+            builder.Services.AddScoped<MoviesService>();
 
             await builder.Build().RunAsync();
         }

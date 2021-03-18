@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GroupMovieRecommender.Server.Data;
 using GroupMovieRecommender.Server.Models;
+using GroupMovieRecommender.Server.Logic;
 
 namespace GroupMovieRecommender.Server
 {
@@ -44,6 +45,8 @@ namespace GroupMovieRecommender.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            this.ConfigureMyAppServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,6 +84,11 @@ namespace GroupMovieRecommender.Server
 
             Data.ApplicationDbContext.EnsureCreated(app.ApplicationServices);
             Data.ApplicationAuthenticationDbContext.EnsureCreated(app.ApplicationServices);
+        }
+
+        private void ConfigureMyAppServices(IServiceCollection services)
+        {
+            services.AddScoped<MoviesLogic>();
         }
     }
 }
