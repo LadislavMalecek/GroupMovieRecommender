@@ -1,0 +1,28 @@
+@page "/search/{query}"
+@using GroupMovieRecommender.Shared
+@using System.Linq
+
+@inject GroupMovieRecommender.Client.Services.MoviesService movieService
+
+
+@if(MoviesResult == null){
+    <h3>Loading...</h3>
+} else if(MoviesResult.Count == 0){
+    <h3>Nothing found :{</h3>
+} else {
+    @foreach(var movie in MoviesResult){
+        <h3>@movie.Title</h3>
+    }
+}
+
+
+@code{
+    [Parameter] public string Query { get; set; }
+
+    List<Movie> MoviesResult { get; set; }
+
+    protected override async Task OnParametersSetAsync() {
+        System.Console.WriteLine("SEARRRRCH " + Query);
+        MoviesResult = (await movieService.SearchMovies(Query, 10)).ToList();
+    }
+}

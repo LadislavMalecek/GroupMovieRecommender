@@ -1,0 +1,13 @@
+<form @onsubmit="Search">
+    <input type="text" class="form-control" @bind="Query">
+</form>
+
+@inject NavigationManager Navigation
+
+@code {
+    private string Query { get; set; }
+    private void Search() {
+        System.Console.WriteLine(Query);
+        Navigation.NavigateTo($"search/{Uri.EscapeDataString(Query)}");
+    }
+}
