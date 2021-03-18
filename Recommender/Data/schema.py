@@ -6,7 +6,7 @@ config = configparser.ConfigParser()
 config.read('../conf.ini')
 
 # db = SqliteDatabase(config['Database']['Filepath'])
-db = SqliteDatabase('../../app.db')
+db = SqliteDatabase(config['Project']['Path'] + config['Database']['Filepath'])
 
 class BaseTable(Model):
     class Meta:
